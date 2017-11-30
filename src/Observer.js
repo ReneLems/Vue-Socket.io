@@ -31,8 +31,8 @@ export default class{
 
         ["connect", "error", "disconnect", "reconnect", "reconnect_attempt", "reconnecting", "reconnect_error", "reconnect_failed", "connect_error", "connect_timeout", "connecting", "ping", "pong"]
             .forEach((value) => {
-                _this.Socket.on(value, (data, ...args) => {
-                    Emitter.emit(value, data, ...args);
+                _this.Socket.on(value, (data) => {
+                    Emitter.emit(value, data);
                     if(_this.store) _this.passToStore('SOCKET_'+value, data)
                 })
             })
